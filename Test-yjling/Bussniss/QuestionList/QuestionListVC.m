@@ -30,7 +30,7 @@ static NSString * const kQuestionListCellIdentifier = @"QuestionListCell";
 @interface QuestionListVC () <UITableViewDelegate, UITableViewDataSource, UINavigationBarDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, copy) NSArray *questions;
+@property (nonatomic, copy) NSArray <QuestionModel *> *questions;
 
 @end
 
@@ -48,18 +48,12 @@ static NSString * const kQuestionListCellIdentifier = @"QuestionListCell";
     
     [self vc_setUpUI];
     [self vc_setUpConstraints];
+    [self vc_loadInitData];
 }
 
 - (void)vc_setUpUI
 {
     self.navigationController.navigationBar.delegate = self;
-    
-    
-//    NSLog(@"%@", self.navigationController.navigationBar.delegate);
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        NSLog(@"%@", self.navigationController.navigationBar.delegate);
-//    });
-    
     self.navigationController.navigationBar.translucent = NO;
     
     self.title = @"Questions";
@@ -77,13 +71,31 @@ static NSString * const kQuestionListCellIdentifier = @"QuestionListCell";
 
 - (void)vc_loadInitData
 {
+    self.questions = [self getQuestions];
+}
+
+#pragma mark - data handler
+- (NSArray <QuestionModel *> *)getQuestions
+{
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"Questions" ofType:@"plist"];
+    NSArray *array = [NSArray arrayWithContentsOfFile:filePath];
     
+    NSMutableArray *models = [NSMutableArray array];
+    
+    for (NSDictionary *dic in array) {
+        QuestionModel *model = [[QuestionModel alloc] init];
+        model.question_id = [dic vv_stringForKey:@"id"];
+        model.question = [dic vv_stringForKey:@"question"];
+        model.answer = [dic vv_stringForKey:@"answer"];
+        [models addObject:model];
+    }
+    
+    return [models copy];
 }
 
 #pragma mark - tableview datasource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
     return self.questions.count;
 }
 

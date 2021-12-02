@@ -11,6 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol ViewProtocol <NSObject>
 
+@optional
 - (void)setUpUI;
 - (void)setUpConstraints;
 - (void)bindUIActions;

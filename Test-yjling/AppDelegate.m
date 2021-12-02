@@ -7,7 +7,7 @@
 
 #import "AppDelegate.h"
 #import "NavigationController.h"
-#import "QuestionList/QuestionListVC.h"
+#import "QuestionListVC.h"
 
 @interface AppDelegate ()
 

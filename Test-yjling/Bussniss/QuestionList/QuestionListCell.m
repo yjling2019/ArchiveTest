@@ -43,34 +43,29 @@ static CGFloat const kLabelPadding = 15;
     [self.topLabel mas_updateConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(kLabelPadding);
         make.trailing.mas_equalTo(-kLabelPadding);
-        make.height.mas_equalTo(22);
-        make.top.mas_equalTo(15);
+        make.height.mas_equalTo(26);
+        make.top.mas_equalTo(10);
     }];
     
     [self.bottomLabel mas_updateConstraints:^(MASConstraintMaker *make) {
         make.leading.mas_equalTo(kLabelPadding);
         make.trailing.mas_equalTo(-kLabelPadding);
         make.top.equalTo(self.topLabel.mas_bottom).offset(8);
-        make.bottom.mas_equalTo(-10);
+        make.bottom.mas_equalTo(-14);
     }];
 }
 
 - (void)updateWithModel:(QuestionModel *)model
 {
-//    VVAssertReturnVoid(model && [model isKindOfClass:[QuestionModel class]], @"model error");
+    VVAssertReturnVoid(model && [model isKindOfClass:[QuestionModel class]], @"model error");
     
     self.topLabel.text = [NSString stringWithFormat:@"Question %@", model.question_id];
     self.bottomLabel.text = model.question;
-    
-#if DEBUG
-    self.topLabel.text = @"Question";
-    self.bottomLabel.text = @"content content content content content content content";
-#endif
 }
 
 #pragma mark - lazy load
 VVLazyload(UILabel, topLabel, {
-    _topLabel.font = [UIFont boldSystemFontOfSize:18];
+    _topLabel.font = [UIFont boldSystemFontOfSize:20];
 })
 
 VVLazyload(UILabel, bottomLabel, {

@@ -8,6 +8,7 @@
 #import <Foundation/Foundation.h>
 #import "UIColor+VVHelp.h"
 #import "NSArray+DataProtect.h"
+#import "NSDictionary+DataProtect.h"
 
 #pragma mark - Lazy load
 #define VVLazyload(class, name, config)     - (class *)name\
