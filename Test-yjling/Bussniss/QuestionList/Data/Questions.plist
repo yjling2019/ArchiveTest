@@ -8,63 +8,120 @@
 		<key>question</key>
 		<string>ARC下对象的property属性修饰词有哪些？不显式指定任何修饰词时，默认的修饰词是什么？</string>
 		<key>answer</key>
-		<string></string>
+		<string>
+1. ARC下对象的修饰词
+weak
+strong
+copy
+nonatomic
+atomic
+readonly
+readwrite
+nullable
+nonnull
+
+2. 默认的修饰词
+atomic
+readwrite
+assign(非对象类型)/strong(对象类型)
+nullable(未声明NS_ASSUME_NONNULL_BEGIN)/nonnull(声明NS_ASSUME_NONNULL_BEGIN)
+        </string>
 	</dict>
-    <dict>
-        <key>id</key>
-        <string>2</string>
-        <key>question</key>
-        <string>浅复制、深复制的区别是什么？</string>
-        <key>answer</key>
-        <string></string>
-    </dict>
-    <dict>
-        <key>id</key>
-        <string>3</string>
-        <key>question</key>
-        <string>ARC下__block和__weak修饰符有什么区别？分别用来做什么？</string>
-        <key>answer</key>
-        <string></string>
-    </dict>
-    <dict>
-        <key>id</key>
-        <string>4</string>
-        <key>question</key>
-        <string>网络框架用的哪一个？为什么？</string>
-        <key>answer</key>
-        <string></string>
-    </dict>
-    <dict>
-        <key>id</key>
-        <string>5</string>
-        <key>question</key>
-        <string>社会化分享如何实现分享完成后返回到当前App的？</string>
-        <key>answer</key>
-        <string></string>
-    </dict>
-    <dict>
-        <key>id</key>
-        <string>6</string>
-        <key>question</key>
-        <string>简述SDWebImage的实现原理(缓存+视图)。</string>
-        <key>answer</key>
-        <string></string>
-    </dict>
-    <dict>
-        <key>id</key>
-        <string>7</string>
-        <key>question</key>
-        <string>谈谈对响应链的理解。</string>
-        <key>answer</key>
-        <string></string>
-    </dict>
-    <dict>
-        <key>id</key>
-        <string>8</string>
-        <key>question</key>
-        <string>如果对App进行性能优化，你会怎么做？</string>
-        <key>answer</key>
-        <string></string>
-    </dict>
+	<dict>
+		<key>id</key>
+		<string>2</string>
+		<key>question</key>
+		<string>浅复制、深复制的区别是什么？</string>
+		<key>answer</key>
+		<string>
+浅拷贝只复制对象的指针，而不复制对象本身，新旧对象还是共享同一块内存。
+但深拷贝会另外创造一个一模一样的对象，新对象跟原对象不共享内存，修改新对象不会改到原对象。
+        </string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>3</string>
+		<key>question</key>
+		<string>ARC下__block和__weak修饰符有什么区别？分别用来做什么？</string>
+		<key>answer</key>
+		<string>
+__block用于解决block内部无法修改外部变量的问题。__block会持有该对象，即使超出了该对象的作用域，该对象还是会存在的，直到block对象从堆上销毁；
+
+使用了__weak修饰符的对象，作用等同于定义为weak的property，避免循环引用。
+
+__block和__weak修饰符的区别：
+1.__block不管是ARC还是MRC模式下都可以使用，可以修饰对象，还可以修饰基本数据类型。
+2.__weak只能在ARC模式下使用，也只能修饰对象（NSString），不能修饰基本数据类型（int）。
+3.__block对象可以在block中被重新赋值，__weak不可以。
+4.__block对象在ARC下可能会导致循环引用，非ARC下会避免循环引用，__weak只在ARC下使用，可以避免循环引用。</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>4</string>
+		<key>question</key>
+		<string>网络框架用的哪一个？为什么？</string>
+		<key>answer</key>
+		<string>
+基于AFNetworking的二次封装，总体思路参照YTKNetwork
+
+原因
+1. 总体来说，AF不能很好的满足我们的需求
+2. AF是中心化的api，对项目耦合过重，扩展不便
+3. AF未提供缓存、url细致化管理、请求依赖管理相关功能
+</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>5</string>
+		<key>question</key>
+		<string>社会化分享如何实现分享完成后返回到当前App的？</string>
+		<key>answer</key>
+		<string>
+首先，我们的app会向系统注册一个url scheme
+
+分享的时候，会把这个url scheme传给三方app
+
+当分享完成，三方app会调用url scheme回到我们的app</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>6</string>
+		<key>question</key>
+		<string>简述SDWebImage的实现原理(缓存+视图)。</string>
+		<key>answer</key>
+		<string>
+缓存:查找和缓存图片时以URL作为key。(先查找内存，如果内存不存在该图片，再查找硬盘；查找硬盘时，以URL的MD5值作为key).
+
+视图:通过对系统控件添加扩展函数，内部下载完成后展示到UI
+    </string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>7</string>
+		<key>question</key>
+		<string>谈谈对响应链的理解。</string>
+		<key>answer</key>
+		<string>
+在iOS中不是任何对象都能处理事件，只有继承了UIResponder的对象才能接受并处理事件，我们称之为“响应者对象”。
+
+当事件发生了，由响应者链来对事件进行响应。
+
+响应者链是由一个不同“响应者对象”组成的层次结构，其中的每个对象将依次获得响应事件的机会。当发生事件时，事件首现将被发送到第一响应者，第一响应者基本是事件发生的事图，也就是用户触摸屏幕的地方。事件将沿着响应者链一直向下传递，直到被接受并作出处理。
+
+一般来说，第一响应者是个视图对象或者其子类对象，当其被触摸后事件被交由它处理，如果它不处理，事件就会被传递给它的视图控制器对象ViewController（如果存在），然后是它的父视图（superview）对象（如果存在），以此类推，直到顶层视图。接下来会沿着顶层视图（top view）到窗口（UIWindow 对象）再到程序（UIApplication 对象）。如果整个过程都没有响应这个事件，该事件就被丢弃。在响应者链只要有对象处理事件，事件就停止传递。</string>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>8</string>
+		<key>question</key>
+		<string>如果对App进行性能优化，你会怎么做？</string>
+		<key>answer</key>
+		<string>
+性能优化，预防大于治理。
+
+1. 确认优化方向和目的
+2. 如果项目从未优化过，先简单优化一版，可以大幅提高性能
+3. 其次创建合理的指标，持续的监控和优化</string>
+	</dict>
 </array>
 </plist>
