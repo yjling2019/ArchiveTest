@@ -25,7 +25,7 @@ static CGFloat const kLabelPadding = 15;
 
 + (instancetype)vc_controllerWithModel:(id)model
 {
-//    VVParameterAssert(model);
+    VVParameterAssert(model);
     
     QuestionDetailVC *vc = [[QuestionDetailVC alloc] init];
     vc.model = model;
