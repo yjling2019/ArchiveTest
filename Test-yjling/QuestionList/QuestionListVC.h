@@ -6,8 +6,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ViewControllerProtocol.h"
 
-@interface ViewController : UIViewController
+@interface QuestionListVC : UIViewController <ViewControllerProtocol>
 
 
 @end
