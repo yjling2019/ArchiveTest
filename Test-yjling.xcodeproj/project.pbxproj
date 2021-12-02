@@ -12,7 +12,6 @@
 		5D450FDA275868CC00D8ED8B /* QuestionListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D450FD9275868CC00D8ED8B /* QuestionListVC.m */; };
 		5D450FDD275868CC00D8ED8B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D450FDB275868CC00D8ED8B /* Main.storyboard */; };
 		5D450FDF275868CC00D8ED8B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D450FDE275868CC00D8ED8B /* Assets.xcassets */; };
-		5D450FE2275868CC00D8ED8B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D450FE0275868CC00D8ED8B /* LaunchScreen.storyboard */; };
 		5D450FE5275868CC00D8ED8B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D450FE4275868CC00D8ED8B /* main.m */; };
 		5D450FEF275868CD00D8ED8B /* Test_yjlingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D450FEE275868CD00D8ED8B /* Test_yjlingTests.m */; };
 		5D450FF9275868CD00D8ED8B /* Test_yjlingUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D450FF8275868CD00D8ED8B /* Test_yjlingUITests.m */; };
@@ -24,6 +23,7 @@
 		5D4510182758770D00D8ED8B /* QuestionListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4510172758770D00D8ED8B /* QuestionListCell.m */; };
 		5D45101C275878CC00D8ED8B /* QuestionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D45101B275878CC00D8ED8B /* QuestionModel.m */; };
 		5D45102027587AB600D8ED8B /* NSArray+DataProtect.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D45101F27587AB600D8ED8B /* NSArray+DataProtect.m */; };
+		5D45102427588B5C00D8ED8B /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D45102327588B5C00D8ED8B /* NavigationController.m */; };
 		FE3914C5AC23DE2642C30E0A /* libPods-Test-yjling.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A0119770403293091A06AEFA /* libPods-Test-yjling.a */; };
 /* End PBXBuildFile section */
 
@@ -56,7 +56,6 @@
 		5D450FD9275868CC00D8ED8B /* QuestionListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuestionListVC.m; sourceTree = "<group>"; };
 		5D450FDC275868CC00D8ED8B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5D450FDE275868CC00D8ED8B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		5D450FE1275868CC00D8ED8B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5D450FE3275868CC00D8ED8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5D450FE4275868CC00D8ED8B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5D450FEA275868CD00D8ED8B /* Test-yjlingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Test-yjlingTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,6 +77,8 @@
 		5D45101B275878CC00D8ED8B /* QuestionModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuestionModel.m; sourceTree = "<group>"; };
 		5D45101E27587AB600D8ED8B /* NSArray+DataProtect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+DataProtect.h"; sourceTree = "<group>"; };
 		5D45101F27587AB600D8ED8B /* NSArray+DataProtect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+DataProtect.m"; sourceTree = "<group>"; };
+		5D45102227588B5C00D8ED8B /* NavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NavigationController.h; sourceTree = "<group>"; };
+		5D45102327588B5C00D8ED8B /* NavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
 		A0119770403293091A06AEFA /* libPods-Test-yjling.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Test-yjling.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -145,6 +146,7 @@
 				5D450FD3275868CC00D8ED8B /* AppDelegate.m */,
 				5D450FD5275868CC00D8ED8B /* SceneDelegate.h */,
 				5D450FD6275868CC00D8ED8B /* SceneDelegate.m */,
+				5D45102127588B3B00D8ED8B /* Navigation */,
 				5D4510142758760400D8ED8B /* QuestionList */,
 				5D4510152758761200D8ED8B /* QuestionDetail */,
 				5D45100E2758737F00D8ED8B /* Base */,
@@ -152,7 +154,6 @@
 				5D45100A275870F900D8ED8B /* Questions.plist */,
 				5D450FDB275868CC00D8ED8B /* Main.storyboard */,
 				5D450FDE275868CC00D8ED8B /* Assets.xcassets */,
-				5D450FE0275868CC00D8ED8B /* LaunchScreen.storyboard */,
 				5D450FE3275868CC00D8ED8B /* Info.plist */,
 				5D450FE4275868CC00D8ED8B /* main.m */,
 			);
@@ -217,6 +218,15 @@
 				5D451008275870D700D8ED8B /* QuestionDetailVC.m */,
 			);
 			path = QuestionDetail;
+			sourceTree = "<group>";
+		};
+		5D45102127588B3B00D8ED8B /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				5D45102227588B5C00D8ED8B /* NavigationController.h */,
+				5D45102327588B5C00D8ED8B /* NavigationController.m */,
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 		D91473511BB6C123DAD78F30 /* Frameworks */ = {
@@ -332,7 +342,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D45100B275870F900D8ED8B /* Questions.plist in Resources */,
-				5D450FE2275868CC00D8ED8B /* LaunchScreen.storyboard in Resources */,
 				5D450FDF275868CC00D8ED8B /* Assets.xcassets in Resources */,
 				5D450FDD275868CC00D8ED8B /* Main.storyboard in Resources */,
 			);
@@ -392,6 +401,7 @@
 				5D450FD4275868CC00D8ED8B /* AppDelegate.m in Sources */,
 				5D450FE5275868CC00D8ED8B /* main.m in Sources */,
 				5D4510102758739E00D8ED8B /* Macros.h in Sources */,
+				5D45102427588B5C00D8ED8B /* NavigationController.m in Sources */,
 				5D45101C275878CC00D8ED8B /* QuestionModel.m in Sources */,
 				5D450FD7275868CC00D8ED8B /* SceneDelegate.m in Sources */,
 			);
@@ -436,14 +446,6 @@
 				5D450FDC275868CC00D8ED8B /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		5D450FE0275868CC00D8ED8B /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5D450FE1275868CC00D8ED8B /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

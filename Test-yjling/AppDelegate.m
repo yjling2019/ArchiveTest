@@ -6,6 +6,8 @@
 //
 
 #import "AppDelegate.h"
+#import "NavigationController.h"
+#import "QuestionList/QuestionListVC.h"
 
 @interface AppDelegate ()
 
@@ -13,9 +15,17 @@
 
 @implementation AppDelegate
 
+@synthesize window = _window;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    QuestionListVC *questionVC = [QuestionListVC vc_controller];
+
+    NavigationController *nav = [[NavigationController alloc] initWithRootViewController:questionVC];
+    self.window.rootViewController = nav;
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @optional
 + (instancetype)vc_controller;
++ (instancetype)vc_controllerWithModel:(id)model;
 
 - (void)vc_setUpUI;
 - (void)vc_setUpConstraints;

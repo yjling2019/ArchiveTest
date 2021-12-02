@@ -27,7 +27,7 @@ static NSString * const kQuestionListCellIdentifier = @"QuestionListCell";
 //7.谈谈对响应链的理解。
 //8.如果对App进行性能优化，你会怎么做？
 
-@interface QuestionListVC () <UITableViewDelegate, UITableViewDataSource>
+@interface QuestionListVC () <UITableViewDelegate, UITableViewDataSource, UINavigationBarDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, copy) NSArray *questions;
@@ -37,6 +37,11 @@ static NSString * const kQuestionListCellIdentifier = @"QuestionListCell";
 @implementation QuestionListVC
 
 #pragma mark - life circle
++ (instancetype)vc_controller
+{
+    return [[[self class] alloc] init];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -47,6 +52,16 @@ static NSString * const kQuestionListCellIdentifier = @"QuestionListCell";
 
 - (void)vc_setUpUI
 {
+    self.navigationController.navigationBar.delegate = self;
+    
+    
+//    NSLog(@"%@", self.navigationController.navigationBar.delegate);
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        NSLog(@"%@", self.navigationController.navigationBar.delegate);
+//    });
+    
+    self.navigationController.navigationBar.translucent = NO;
+    
     self.title = @"Questions";
     
     self.view.backgroundColor = CNo_f5f7f9;
@@ -60,7 +75,12 @@ static NSString * const kQuestionListCellIdentifier = @"QuestionListCell";
     }];
 }
 
-#pragma mark - table view
+- (void)vc_loadInitData
+{
+    
+}
+
+#pragma mark - tableview datasource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return 10;
@@ -74,10 +94,26 @@ static NSString * const kQuestionListCellIdentifier = @"QuestionListCell";
     return cell;
 }
 
+#pragma mark - tableview delegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    QuestionDetailVC *vc = [QuestionDetailVC vc_controllerWithModel:[self.questions vv_objectWithIndex:indexPath.row]];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+#pragma mark - UINavigationBarDelegate
+- (UIBarPosition)positionForBar:(id<UIBarPositioning>)bar
+{
+    return UIBarPositionTopAttached;
+}
+
 #pragma mark - lazy load
 VVLazyload(UITableView, tableView, {
     _tableView.delegate = self;
     _tableView.dataSource = self;
+    _tableView.showsVerticalScrollIndicator = NO;
+    _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+
     [_tableView registerClass:[QuestionListCell class] forCellReuseIdentifier:kQuestionListCellIdentifier];
 })
 

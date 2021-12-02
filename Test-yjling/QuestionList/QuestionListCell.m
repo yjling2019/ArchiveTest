@@ -32,6 +32,8 @@ static CGFloat const kLabelPadding = 15;
 
 - (void)setUpUI
 {
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     [self.contentView addSubview:self.topLabel];
     [self.contentView addSubview:self.bottomLabel];
 }
@@ -57,8 +59,13 @@ static CGFloat const kLabelPadding = 15;
 {
 //    VVAssertReturnVoid(model && [model isKindOfClass:[QuestionModel class]], @"model error");
     
+    self.topLabel.text = [NSString stringWithFormat:@"Question %@", model.question_id];
+    self.bottomLabel.text = model.question;
+    
+#if DEBUG
     self.topLabel.text = @"Question";
     self.bottomLabel.text = @"content content content content content content content";
+#endif
 }
 
 #pragma mark - lazy load
